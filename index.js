@@ -29,6 +29,21 @@ app.get("/", (req, res) => {
   res.send(`<h1>Server is working</h1>`);
 });
 
+//testing
+app.get("/get/data", (req, res) => {
+  const myData = {
+    name: "Leo Messi",
+    award: "Golden Ball",
+    folllowers: "4001m",
+    YoungLegend: "MBappe",
+  };
+  res.status(200).json({
+    success: true,
+    message: "get successfully!",
+    data: myData,
+  });
+});
+
 //server port
 
 const PORT = process.env.PORT;
