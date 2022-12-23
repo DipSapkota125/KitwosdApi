@@ -49,7 +49,7 @@ userSchema.pre("save", async function (next) {
 //jwt token generate
 userSchema.methods.getSignedJwtToken = function () {
   return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
-    expiresIn: "1h",
+    expiresIn: "12h",
   });
 };
 

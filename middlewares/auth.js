@@ -15,7 +15,7 @@ export const authenticated = async (req, res, next) => {
 
     const decoded = await jwt.verify(token, process.env.JWT_SECRET);
     req.user = await User.findById(decoded.id);
-    if (req.user == null) {
+    if (req.user === null) {
       return res.status(401).json({
         success: false,
         message: "session expired!",
