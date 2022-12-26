@@ -147,12 +147,6 @@ export const updateProfile = async (req, res) => {
   try {
     const { fullName, email, mobile } = req.body;
     const avatar = req.file.filename;
-    if (!fullName || !email || !mobile) {
-      return res.status(400).json({
-        success: false,
-        message: "filled must be update!",
-      });
-    }
 
     const user = await User.findByIdAndUpdate(
       req.user.id,
@@ -172,6 +166,31 @@ export const updateProfile = async (req, res) => {
       success: true,
       message: "user update Successfully!",
       data: userData,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "error.message",
+    });
+  }
+};
+
+//delete profile
+
+export const deleteProfile = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+    if (!user) {
+      return res.status(400).json({
+        success: false,
+        message: "User does not found!",
+      });
+    }
+
+    await user.remove();
+    res.status(200).json({
+      success: true,
+      message: "User delete successfully!",
     });
   } catch (error) {
     return res.status(500).json({

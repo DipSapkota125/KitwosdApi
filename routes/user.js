@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  deleteProfile,
   login,
   register,
   singleUser,
@@ -20,5 +21,7 @@ router.put(
   upload.single("avatar"),
   updateProfile
 );
+
+router.delete("/profile/delete", authenticated, deleteProfile);
 
 export default router;
