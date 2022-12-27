@@ -52,7 +52,7 @@ export const register = async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       success: false,
-      message: "error.message",
+      message: error.message,
     });
   }
 };
@@ -104,7 +104,7 @@ export const login = async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       success: false,
-      message: "error.message",
+      message: error.message,
     });
   }
 };
@@ -170,7 +170,7 @@ export const updateProfile = async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       success: false,
-      message: "error.message",
+      message: error.message,
     });
   }
 };
@@ -195,7 +195,7 @@ export const deleteProfile = async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       success: false,
-      message: "error.message",
+      message: error.message,
     });
   }
 };
