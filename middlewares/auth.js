@@ -30,3 +30,16 @@ export const authenticated = async (req, res, next) => {
     });
   }
 };
+
+//for admin role
+export const authorizeRoles = (...roles) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      return res.status(401).json({
+        success: false,
+        message: ` ${req.user.role} is not allowed to access this resource`,
+      });
+    }
+    next();
+  };
+};

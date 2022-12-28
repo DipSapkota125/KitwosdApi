@@ -93,6 +93,7 @@ export const login = async (req, res) => {
       email: user.email,
       mobile: user.mobile,
       avatar: user.avatar,
+      role: user.role,
     };
 
     res.status(200).json({

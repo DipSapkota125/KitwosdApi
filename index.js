@@ -4,7 +4,9 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import cors from "cors";
 import ConnectDB from "./config/db.js";
+
 import userRoute from "./routes/user.js";
+import foodRoute from "./routes/food.js";
 
 const app = express();
 
@@ -23,6 +25,7 @@ ConnectDB();
 
 //routes
 app.use("/api", userRoute);
+app.use("/api", foodRoute);
 
 //server is working
 app.get("/", (req, res) => {
